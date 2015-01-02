@@ -1,6 +1,6 @@
 {
   "name": "extendable-base",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Simple library for setting up Javascript classes based on Backbone.extend",
   "main": "index.js",
   "directories": {
