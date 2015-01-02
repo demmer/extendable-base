@@ -1,4 +1,4 @@
-var Base = require('../index');
+var Base = require('extendable-base');
 
 var Animal = Base.extend({
     initialize: function() {

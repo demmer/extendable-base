@@ -1,4 +1,4 @@
-var Base = require('../index');
+var Base = require('extendable-base');
 
 var BaseError = Base.inherits(Error, {
     default_status: 500,
@@ -25,14 +25,22 @@ var BadRequestError = BaseError.extend({
     default_message: "Not Found"
 });
 
-console.log(new BadRequestError().toJSON());
-// { status: 400, message: 'Not Found' }
+module.exports = {
+    BaseError: BaseError,
+    NotFoundError: NotFoundError,
+    BadRequestError: BadRequestError
+};
 
-console.log(new BadRequestError("Invalid request").toJSON());
-// { status: 400, message: 'Invalid request' }
+if (require.main === module) {
+    console.log(new BadRequestError().toJSON());
+    // { status: 400, message: 'Not Found' }
 
-console.log(new BadRequestError("Unauthorized", 401).toJSON());
-// { status: 401, message: 'Unauthorized' }
+    console.log(new BadRequestError("Invalid request").toJSON());
+    // { status: 400, message: 'Invalid request' }
 
-console.log(new NotFoundError().toJSON());
-// { status: 404, message: 'Bad Request' }
+    console.log(new BadRequestError("Unauthorized", 401).toJSON());
+    // { status: 401, message: 'Unauthorized' }
+
+    console.log(new NotFoundError().toJSON());
+    // { status: 404, message: 'Bad Request' }
+}
