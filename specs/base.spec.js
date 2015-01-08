@@ -33,6 +33,11 @@ describe("base class", function() {
         expect(dog.fur()).equal("I have brown fur");
     });
 
+    it("initializers are called in order of inheritance", function() {
+        var dog = new FurryDog("brown");
+        expect(dog.chain).equal("Animal->FourLegged->Furry->FurryDog");
+    });
+
     it('handles instanceof', function() {
         var a = new Animal();
         var twolegs = new TwoLegged();
