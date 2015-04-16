@@ -155,4 +155,3 @@
     ];
     return _require(0);
 }));
-//# sourceMappingURL=extendable-base.js.map
