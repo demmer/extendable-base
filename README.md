@@ -1,4 +1,4 @@
-extendable-base: Simple library for setting up Javascript classes
+extendable-base: Simple library for setting up Javascript classes [![Build Status: Linux](https://travis-ci.org/jut-io/extendable-base.png?branch=master)](https://travis-ci.org/jut-io/extendable-base)
 =================================================================
 
 Leverages `Backbone.extend` semantics for defining subclasses in a generic way,
