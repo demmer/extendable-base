@@ -36,6 +36,7 @@
             var Animal = Base.extend({
                     initialize: function () {
                         this.classname = 'Animal';
+                        this.chain = this.classname;
                     },
                     ident: function () {
                         return 'I am an ' + this.classname;
@@ -52,9 +53,13 @@
                     // Initialize is called for all classes
                     initialize: function () {
                         this._legs = 4;
+                        this.chain = this.chain + '->FourLegged';
                     }
                 });
             var Furry = {
+                    initialize: function () {
+                        this.chain = this.chain + '->Furry';
+                    },
                     fur: function () {
                         return 'I have ' + this.fur_color + ' fur';
                     }
@@ -63,6 +68,7 @@
                     classname: 'FurryDog',
                     initialize: function (fur_color) {
                         this.fur_color = fur_color;
+                        this.chain = this.chain + '->FurryDog';
                     }
                 });
             module.exports = {
@@ -106,6 +112,10 @@
                     var dog = new FurryDog('brown');
                     expect(dog.legs()).equal('I have 4 legs');
                     expect(dog.fur()).equal('I have brown fur');
+                });
+                it('initializers are called in order of inheritance', function () {
+                    var dog = new FurryDog('brown');
+                    expect(dog.chain).equal('Animal->FourLegged->Furry->FurryDog');
                 });
                 it('handles instanceof', function () {
                     var a = new Animal();
